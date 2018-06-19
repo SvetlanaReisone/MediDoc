@@ -1,0 +1,1 @@
+export { PersonalPageComponent } from './personal-page/personal-page.component';
