@@ -9,11 +9,12 @@
     <ion-title>Personal treatment</ion-title>
   </ion-toolbar>
 </ion-header>
+<p>page tratment</p>
 <ion-tabs>
-  <ion-tab label="CURRENT" icon="person" href="/tabs/(two:two)">
+  <ion-tab label="CURRENT" icon="person" href="/:personid/(curr:curr)">
     <ion-router-outlet name="current_treatment"></ion-router-outlet>
   </ion-tab>
-  <ion-tab label="HISTORY" icon="bookmarks" href="/tabs/(three:three)">
+  <ion-tab label="HISTORY" icon="bookmarks" href="/:personid/(hist:hist)">
     <ion-router-outlet name="history_tratment"></ion-router-outlet>
   </ion-tab>
 </ion-tabs>

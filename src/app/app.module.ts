@@ -11,9 +11,10 @@ import { AppRoutingModule } from './app-routing.module';
 
  // STORAGE module
  import { IonicStorageModule } from '@ionic/storage';
+ import { TabHistoryComponent } from './features/tab-history/containers/tab-history/tab-history.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, TabHistoryComponent],
   entryComponents: [],
   imports: [
     BrowserModule,

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { StorageService } from '../../../../shared/services/storage.service';
+
 
 @Component({
   selector: 'app-tab-current',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabCurrentComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private _storage: StorageService
+  ) { }
 
   ngOnInit() {
+    this._storage.set('User', 'Svetlana')
   }
 
 }

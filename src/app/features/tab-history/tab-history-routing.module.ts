@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {TabCurrentComponent} from './containers/tab-current/tab-current.component'
+import {TabHistoryComponent} from './containers/tab-history/tab-history.component';
 
 const routes: Routes = [
   {
     path: '',
-    outlet: 'current',
-    component: TabCurrentComponent
+    outlet: 'hist',
+    component: TabHistoryComponent
   }
 ];
 
@@ -14,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class TabCurrentRoutingModule { }
+export class TabHistoryRoutingModule { }
