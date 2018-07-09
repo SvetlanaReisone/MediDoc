@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {PersonalPageComponent}  from './containers/';
 
 const routes: Routes = [
-    {path: ':enumber',
+    {path: ':personid',
     component: PersonalPageComponent }
 ];
 
