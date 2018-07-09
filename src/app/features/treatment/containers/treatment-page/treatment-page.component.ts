@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-treatment-page',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TreatmentPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private _router: Router,
+    private _location: Location
+  ) { }
 
   ngOnInit() {
+  }
+
+  back() {
+    this._location.back();
   }
 
 }

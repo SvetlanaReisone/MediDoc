@@ -2,13 +2,18 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-        <ion-button >
+        <ion-button (click)="back()">
           <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
         </ion-button>
     </ion-buttons>
-    <ion-title>Persona treatment</ion-title>
+    <ion-title>Personal treatment</ion-title>
   </ion-toolbar>
 </ion-header>
-<p>
-  treatment-page works!
-</p>
+<ion-tabs>
+  <ion-tab label="CURRENT" icon="person" href="/tabs/(two:two)">
+    <ion-router-outlet name="current_treatment"></ion-router-outlet>
+  </ion-tab>
+  <ion-tab label="HISTORY" icon="bookmarks" href="/tabs/(three:three)">
+    <ion-router-outlet name="history_tratment"></ion-router-outlet>
+  </ion-tab>
+</ion-tabs>
