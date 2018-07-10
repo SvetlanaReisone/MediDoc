@@ -5,7 +5,7 @@ import {TabCurrentComponent} from './containers/tab-current/tab-current.componen
 const routes: Routes = [
   {
     path: '',
-    outlet: 'current',
+    outlet: 'curr',
     component: TabCurrentComponent
   }
 ];

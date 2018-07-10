@@ -3,18 +3,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, RouteReuseStrategy, Routes } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
+
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
  // STORAGE module
  import { IonicStorageModule } from '@ionic/storage';
- import { TabHistoryComponent } from './features/tab-history/containers/tab-history/tab-history.component';
+ 
 
 @NgModule({
-  declarations: [AppComponent, TabHistoryComponent],
+  declarations: [AppComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
@@ -23,8 +22,8 @@ import { AppRoutingModule } from './app-routing.module';
     IonicStorageModule.forRoot()
   ],
   providers: [
-    StatusBar,
-    SplashScreen,
+    //StatusBar,
+    //SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

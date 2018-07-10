@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
-import { MedicationsPageComponent } from '../../../../shared/components/medications-page/medications-page.component';
+import {IPersonal} from '../../../../models/personal';
 
 
 @Component({
@@ -16,7 +16,11 @@ export class PersonalPageComponent implements OnInit {
     private _route: ActivatedRoute,
     private _router: Router,
     private _modalController: ModalController
-  ) { }
+  ) { 
+
+  }
+
+  public Person : IPersonal;
 
   ngOnInit() {
   }
