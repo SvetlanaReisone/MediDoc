@@ -3,9 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import { WelcomeRoutingModule } from './welcome-routing.module';
 import { WelcomePageComponent } from './containers/welcome-page/welcome-page.component';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   imports: [
+    SharedModule,
     CommonModule,
     WelcomeRoutingModule
   ],

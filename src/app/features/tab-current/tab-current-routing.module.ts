@@ -1,14 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {PersonalPageComponent}  from './containers/';
+import {TabCurrentComponent} from './containers/tab-current/tab-current.component'
 
 const routes: Routes = [
-    {path: ':personid',
-    component: PersonalPageComponent }
+  {
+    path: '',
+    outlet: 'curr',
+    component: TabCurrentComponent
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class PersonalRoutingModule { }
+export class TabCurrentRoutingModule { }

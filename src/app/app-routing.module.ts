@@ -7,6 +7,10 @@ const routes: Routes = [
     loadChildren: './features/personal/personal.module#PersonalModule'
   },
   {
+    path: 'treatment',
+    loadChildren: './features/treatment/treatment.module#TreatmentModule'
+  },
+  {
     path: '',
     loadChildren: './features/welcome/welcome.module#WelcomeModule'
   },
