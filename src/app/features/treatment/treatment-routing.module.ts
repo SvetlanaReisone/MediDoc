@@ -6,22 +6,6 @@ const routes: Routes = [
   {
     path: ':personid',
     component: TreatmentPageComponent,
-    children: [
-      {
-        path: 'curr',
-        outlet: 'curr',
-        loadChildren: '../tab-current/tab-current.module#TabCurrentModule'
-      },
-      {
-        path: 'hist',
-        outlet: 'hist',
-        loadChildren: '../tab-history/tab-history.module#TabHistoryModule'
-      }
-    ]
-  },
-  {
-    path: '',
-    redirectTo: '/:personid/(curr:curr)'
   }
 ];
 

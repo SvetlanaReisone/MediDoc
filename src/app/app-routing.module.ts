@@ -14,11 +14,7 @@ const routes: Routes = [
     path: '',
     loadChildren: './features/welcome/welcome.module#WelcomeModule'
   },
-  // 404 error - tout le reste qui n'est pas trouvé
-  // {
-  //   path: '**/*',  
-  //   loadChildren: './features/welcome/welcome.module#WelcomeModule'
-  // },
+
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

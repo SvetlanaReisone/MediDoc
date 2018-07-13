@@ -1,12 +1,20 @@
 <ion-header>
   <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+          <ion-button (click)="back()">
+            <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+          </ion-button>
+    </ion-buttons>
     <ion-buttons slot="secondary" >
-      <ion-button>
-        <ion-icon slot="icon-only" name="search"></ion-icon>
+      <ion-button (click)="save()">
+        <ion-icon slot="icon-only" name="save"></ion-icon>
       </ion-button>
      
     </ion-buttons>
-    <ion-title>Personal Data</ion-title>
+    <ion-title *ngIf="person.firstname; else noPerson">{{person.firstname + ' ' + person.lastname}}  data </ion-title>
+    <ng-template #noPerson>
+        <ion-title>Create new person file</ion-title>
+      </ng-template> 
   </ion-toolbar>
 </ion-header>
 
@@ -16,69 +24,61 @@
       </p>
       xxx <i class="material-icons">face</i> yyy   <!--  material design icon -->
       <!--ooo <i class="material-icons"> accessible  </i>   lll  -->
-  <ion-list>
-     <!--
-          <ion-item>
-            <ion-label>Default</ion-label>
-            <ion-input></ion-input>
-          </ion-item>
-          <ion-item text-wrap>
-            <ion-label>Wrap label this label just goes on and on and on</ion-label>
-            <ion-input></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label position="fixed">Fixed</ion-label>
-            <ion-input></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label position="floating">Floating</ion-label>
-            <ion-input></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label position="stacked">Stacked</ion-label>
-            <ion-input></ion-input>
-          </ion-item>
-      -->
+  <ion-list >   <!-- *ngIf="(person$|async) as person"-->
+
 
     <ion-item>
-      <ion-icon position="start" name = "md-person"> </ion-icon>
-      <ion-label >First Name</ion-label>
-      <ion-input type="text" item-right></ion-input>
-    </ion-item>
+      <ion-icon position="start" name = "md-person"></ion-icon> 
+      <ion-label color="secondary" >First Name </ion-label>
+      <ion-input ngDefaultControl required="true" type="text" item-right
+         [(ngModel)]="person.firstname" ></ion-input>
+      
+    </ion-item> 
 
     <ion-item>
-      <ion-label position="inline">Last Name</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-icon position="start" name = "md-person"></ion-icon> 
+      <ion-label  position="inline">Last Name</ion-label>
+      <ion-input ngDefaultControl required="true"  type="text"
+          [(ngModel)]="person.lastname" >
+      </ion-input>  
     </ion-item>
 
     <ion-item>
         <ion-icon ios="ios-calendar" md="md-calendar"></ion-icon>
         <ion-label>Date of birth</ion-label>
-        <ion-datetime display-format="DD MMMM, YYYY" min="1900" max="2020-10-31" value="2010-10-31"> </ion-datetime>
+        <ion-datetime ngDefaultControl required="true" display-format="DD MMMM, YYYY" min="1900" max="2020" [(ngModel)]="person.date_birth"> </ion-datetime>
     </ion-item>
     <ion-item>
+        <ion-icon  name="speedometer"></ion-icon>
         <ion-label>Weight (kg)</ion-label>
-        <ion-input type="number" min="0" max = "300"></ion-input> 
+        <ion-input ngDefaultControl type="number" min="0" max = "300" [(ngModel)]="person.weight" ></ion-input> 
     </ion-item>
     <ion-item>
         <ion-icon name="water"></ion-icon>
         <ion-label>Blood group</ion-label>
-        <ion-input type="text" ></ion-input> 
+        <ion-input ngDefaultControl type="text" [(ngModel)]="person.blood_group"></ion-input> 
     </ion-item>
 
     <ion-item>
         <svg style="width:24px;height:24px" viewBox="0 0 24 24">
             <path fill="#000000" d="M4.22,11.29L11.29,4.22C13.64,1.88 17.43,1.88 19.78,4.22C22.12,6.56 22.12,10.36 19.78,12.71L12.71,19.78C10.36,22.12 6.56,22.12 4.22,19.78C1.88,17.43 1.88,13.64 4.22,11.29M5.64,12.71C4.59,13.75 4.24,15.24 4.6,16.57L10.59,10.59L14.83,14.83L18.36,11.29C19.93,9.73 19.93,7.2 18.36,5.64C16.8,4.07 14.27,4.07 12.71,5.64L5.64,12.71Z" />
         </svg>
-        <ion-label>Current treatment</ion-label>
+        <ion-label>Treatment</ion-label>
         <ion-input>
-        <div id= "treatment">
             <div id="pills">
-                <h4> Pradaxa 110 mg </h4>
-                <p>  From 2016-10-01, 2 x daily  </p>
-                <h4> Biso-ce ge  0,5 mg </h4>
-                <p>  From 2014-10-01, 2 x daily  </p>                                            
-            </div>
+   <!--  <ul  *ngFor = "let pill of treatment$|async">
+                <li>
+                    {{pill?.name}}
+                </li>
+              </ul>  -->
+             <ion-list *ngFor = "let pill of treatment$|async">
+                  <ion-label>
+                      <ion-text color="primary">
+                        <h2>{{pill?.name}}</h2>
+                      </ion-text>
+                      <p>From: {{pill?.from_date|date: 'dd/MM/yyyy'}}</p>
+                    </ion-label>                                          
+              </ion-list>  
         </div>
       </ion-input>
      <!-- <ion-button icon-only (click)="goPersonalMedications(0)" >  -->
@@ -91,12 +91,9 @@
         <ion-icon name="medical"></ion-icon>
         <ion-label>Allergies</ion-label>
         <ion-input>
-          <div id= "treatment">
             <div id="allerg">
-                <p> Iode </p>
-                <p> Ibuprophene </p>                                            
+                <ion-list></ion-list>                                          
             </div>
-          </div>
         </ion-input>
         <ion-button id="edit_allerg" icon-only >
           <ion-icon name = "create"></ion-icon>
@@ -107,8 +104,7 @@
         <ion-label>Apareillage</ion-label>
         <ion-input >
             <div id="appar">
-                <p> Prothese de hanche gauche</p>
-                <p> Appareille dentaire</p>                                            
+                                            
             </div>
         </ion-input> 
         <ion-button id="edit_appar" icon-only >
@@ -123,13 +119,5 @@
         <ion-label>Family doctor</ion-label>
         <ion-input type="text" ></ion-input> 
     </ion-item>
-
-    <ion-item>
-        <ion-icon name="water"></ion-icon>
-        <ion-label>Blood group</ion-label>
-        <ion-input type="text" ></ion-input> 
-    </ion-item>
-
-
   </ion-list>
 </ion-content>

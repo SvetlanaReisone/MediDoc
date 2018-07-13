@@ -10,12 +10,12 @@ export class StorageService {
     private _storage: Storage
   ) { }
 
-  set(Key:String, value:any){
-   console.log('Set storage, ', Key, value);
+  set(Key:string, value:any){
+     this._storage.set(Key,value);
   }
 
-  get(Key:String){
+  get(Key:string):any {
     console.log('Get from storage, ', Key);
-    return "Hello";
+    return this._storage.get(Key)
    }
 }
